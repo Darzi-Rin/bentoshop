@@ -9,17 +9,31 @@
 </head>
 <!-- nav -->
 <header>
-  <?php require_once '_nav.php'; ?>
+  <?php //require_once '_nav.php'; ?>
 </header>
 
 <body>
+<?php
+// ランダムな文字列を生成
+$randamStr = chr(mt_rand(97, 122)).chr(mt_rand(97, 122)).chr(mt_rand(97, 122)).chr(mt_rand(97, 122)).chr(mt_rand(97, 122)).chr(mt_rand(97, 122)).chr(mt_rand(97, 122)).chr(mt_rand(97, 122)).chr(mt_rand(97, 122));
+// $csrfに値を入れる
+$csrf_token = $randamStr;
+$_SESSION['csrf_token'] = $csrf_token;
+?>
   <!-- メイン -->
-  <form action="user_confirm.php" method="post">
-    <h2>会員登録</h2>
+  <h2>会員登録</h2>
+  <!-- 確認画面へポスト -->
+  <form action="user_confirm.php" method="POST">
+    <!-- 入力欄 -->
+    <!-- csrf対策 -->
+    <input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
     <p>氏名<br><input type="text" name="name"></p>
     <p>メールアドレス（半角英数字）<br><input type="email" name="email"></p>
     <p>パスワード<br><input type="password" name="password"></p>
-    <p>住所<br><input type="text" name="street_address"></p>
+    <p>都道府県（任意）<br><input type="text" name="prefecture"></p>
+    <p>市区町村（任意）<br><input type="text" name="address"></p>
+    <p>マンション名（任意）<br><input type="text" name="address_other"></p>
+    <!-- 確認画面へ遷移 -->
     <p><a href='user_confirm.php'><input type='submit' value='確認画面'></a></p>
   </form>
 </body>
