@@ -8,7 +8,7 @@
     <title>買い物かご画面</title>
     <link rel="stylesheet" href="navi.css">
     <?php
-    require '_navi.php'; 
+    require '_nav.php'; 
     ?>
 
 </head>
