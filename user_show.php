@@ -8,10 +8,6 @@
   <title>マイページ</title>
 </head>
 <!-- header -->
-<!-- nav -->
-<header>
-  <?php require_once '_nav.php'; ?>
-</header>
 
 <!-- 個人情報表示 -->
 <body>
@@ -32,7 +28,7 @@
       <p>お名前：<?= $_SESSION['customer']['name'] ?></p>
       <p>メールアドレス：<?= $_SESSION['customer']['email'] ?></p>
       <p><a href="user_show_log.php"><input type="submit" value="購入履歴へ"></a></p>
-      <p><a href="user_update.php"><input type="submit" value="登録情報変更"></a></p>
+      <p><a href="user_edit.php"><input type="submit" value="登録情報変更"></a></p>
     <?php
 
       // 市区町村なしver
@@ -42,7 +38,7 @@
       <p>メールアドレス：<?= $_SESSION['customer']['email'] ?></p>
       <p>都道府県：<?= $_SESSION['customer']['prefecture'] ?></p>
       <p><a href="user_show_log.php"><input type="submit" value="購入履歴へ"></a></p>
-      <p><a href="user_update.php"><input type="submit" value="登録情報変更"></a></p>
+      <p><a href="user_edit.php"><input type="submit" value="登録情報変更"></a></p>
     <?php
 
       // マンション名なしver
@@ -53,7 +49,7 @@
       <p>都道府県：<?= $_SESSION['customer']['prefecture'] ?></p>
       <p>市区町村：<?= $_SESSION['customer']['address'] ?></p>
       <p><a href="user_show_log.php"><input type="submit" value="購入履歴へ"></a></p>
-      <p><a href="user_update.php"><input type="submit" value="登録情報変更"></a></p>
+      <p><a href="user_edit.php"><input type="submit" value="登録情報変更"></a></p>
     <?php
       } else {
     ?>
@@ -64,7 +60,7 @@
       <p>市区町村：<?= $_SESSION['customer']['address'] ?></p>
       <p>マンション名：<?= $_SESSION['customer']['address_other'] ?></p>
       <p><a href="user_show_log.php"><input type="submit" value="購入履歴へ"></a></p>
-      <p><a href="user_update.php"><input type="submit" value="登録情報変更"></a></p>
+      <p><a href="user_edit.php"><input type="submit" value="登録情報変更"></a></p>
     <?php
       }
     }
