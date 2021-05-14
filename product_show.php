@@ -23,12 +23,14 @@
 
     foreach ($result as $row) {
         $name = $row['name'];
-        $price = $row['stock']; //仮
+        $price = $row['cost'];
         $cal = $row['calorie'];
+        $description = $row['description'];
         $stock = $row['stock'];
     ?>
         <p>商品名：<?= $name ?></p>
         <p>￥<?= $price ?></p>
+        <p><?= $description; ?></p>
         <p>カロリー：<?= $cal ?></p>
         <p>在庫：<?= $stock ?></p>
         <form action="cart_create.php" method="post">

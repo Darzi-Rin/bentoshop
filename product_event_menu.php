@@ -38,7 +38,7 @@
         $stmt = $pdo->query($sql);
         foreach ($stmt as $row) {
             $name = $row['name'];
-            $price = $row['stock'];
+            $price = $row['cost'];
             $code = $row['code'];
 
         ?>
