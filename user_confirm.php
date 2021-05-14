@@ -27,7 +27,6 @@
   $_SESSION['csrf_token'] = $_POST["csrf_token"];
 
   if (isset($_POST["csrf_token"]) && $_POST["csrf_token"] === $_SESSION['csrf_token']) {
-    echo "正常なリクエストです";
     if ($_SESSION['customer']['name'] == '') {
       unset($_SESSION['customer']);
   ?>
