@@ -9,8 +9,7 @@
 </head>
 <!-- nav -->
 <header>
-  <?php //require_once '_nav.php'; 
-  ?>
+  <?php require_once '_nav.php'; ?>
 </header>
 
 <body>

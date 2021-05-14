@@ -8,6 +8,10 @@
   <title>マイページ</title>
 </head>
 <!-- header -->
+<!-- nav -->
+<header>
+  <?php require_once '_nav.php'; ?>
+</header>
 
 <!-- 個人情報表示 -->
 <body>
