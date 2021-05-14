@@ -55,10 +55,7 @@ if (!empty($_SESSION['products'])) {
 <?php
 } else {
 ?>
-    <form action="cart_destroy.php">
     カートに商品がありません。
-    <input type="submit" value="研究">
-    </form>
 <?php
 }
 ?>
