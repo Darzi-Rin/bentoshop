@@ -36,7 +36,7 @@
 
         require "_db_access.php";
 
-        $sql = "select * from aiueoa where code=2";
+        $sql = "select * from products where code=2";
         $stmt = $pdo->query($sql);
         foreach ($stmt as $row) {
             $name = $row['name'];

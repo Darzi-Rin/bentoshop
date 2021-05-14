@@ -17,7 +17,7 @@
     require "_db_access.php";
 
     $name = $_GET['name'];
-    $sql = "select * from aiueoa where name = '$name'";
+    $sql = "select * from products where name = '$name'";
     $stmt = $pdo->query($sql);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

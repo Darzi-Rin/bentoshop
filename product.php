@@ -31,7 +31,7 @@
 
         require "_db_access.php";
 
-        $sql = "select * from aiueoa";
+        $sql = "select * from products";
         $stmt = $pdo->query($sql);
         foreach ($stmt as $row) {
             $name = $row['name'];

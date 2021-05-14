@@ -34,7 +34,7 @@
 
         require "_db_access.php";
 
-        $sql = "select * from aiueoa where code=3";
+        $sql = "select * from products where code=3";
         $stmt = $pdo->query($sql);
         foreach ($stmt as $row) {
             $name = $row['name'];
