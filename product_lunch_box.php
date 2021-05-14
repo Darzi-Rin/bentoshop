@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -36,11 +37,11 @@
 
         require "_db_access.php";
 
-        $sql = "select * from aiueoa where code=1";
+        $sql = "select * from products where code=1";
         $stmt = $pdo->query($sql);
         foreach ($stmt as $row) {
             $name = $row['name'];
-            $price = $row['stock'];
+            $price = $row['cost'];
             $code = $row['code'];
 
         ?>

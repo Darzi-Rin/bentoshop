@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -31,12 +32,12 @@
 
         require "_db_access.php";
 
-        $sql = "select * from aiueoa";
+        $sql = "select * from products";
         $stmt = $pdo->query($sql);
         foreach ($stmt as $row) {
             $name = $row['name'];
-            $price = $row['stock']; //仮
-            $code = $row['code']; //仮
+            $price = $row['cost'];
+            // $code = $row['code']; //仮
 
         ?>
 
