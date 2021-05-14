@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>ログイン画面</title>
     <link rel="stylesheet" href="navi.css">
-    <?php require '_navi.php'; ?>
+    <?php require '_nav.php'; ?>
 </head>
 
 <body>

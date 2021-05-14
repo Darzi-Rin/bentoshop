@@ -18,7 +18,7 @@ unset($_SESSION['customer']);
 <body>
 	<br>
 	<?php
-		require '_navi.php';
+		require '_nav.php';
 		echo 'ログアウトしました。';
 	@session_destroy();
 	?>

@@ -36,7 +36,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ログイン画面</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="navi.css">
 </head>
 <body>
 	<?php
@@ -46,7 +46,7 @@
 		echo 'ログイン名またはパスワードが違います。';
 	}
 	?>
-	<a href="toppage.php">トップ</a>
+	<a href="index.php">トップ</a>
 </body>
 
 </html>

@@ -11,7 +11,7 @@
 
 <body>
 
-	<?php require '_navi.php'; ?>
+	<?php require '_nav.php'; ?>
 	<?php
 	$id = $_REQUEST['id'];
 	if (!isset($_SESSION['products'])) {
