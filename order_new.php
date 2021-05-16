@@ -1,10 +1,5 @@
 <?php
 session_start();
-// ログインの確認
-require "_login_check.php";
-
-require "_token.php";
-$productToken = issueToken('productToken');
 // 仮データ
 // $_SESSION['customer']['id'] = 1;
 // $_SESSION['customer']['name'] = "たまきさま";
@@ -13,6 +8,11 @@ $productToken = issueToken('productToken');
 // $_SESSION['customer']['addressOther'] = "";
 // $_SESSION['product']['00010000']['count'] = 3;
 // $_SESSION['product']['00010001']['count'] = 3;
+// ログインの確認
+require "_login_check.php";
+
+require "_token.php";
+$productToken = issueToken('productToken');
 
 
 // カートの中身があるか
@@ -29,7 +29,7 @@ $prefectures = [
 ];
 
 // 初回は会員データを使用、エラーなどで再入力の際は過去の入力を使用
-$type = "";
+$type = isset($_SESSION['order']['type']) ? $_SESSION['order']['type'] : "";
 $name = isset($_SESSION['order']['name']) ? $_SESSION['order']['name'] : $_SESSION['customer']['name'];
 $prefecture = isset($_SESSION['order']['prefecture']) ? $_SESSION['order']['prefecture'] : $_SESSION['customer']['prefecture'];
 $address = isset($_SESSION['order']['address']) ? $_SESSION['order']['address'] : $_SESSION['customer']['address'];
@@ -53,12 +53,12 @@ $addressOther = isset($_SESSION['order']['addressOther']) ? $_SESSION['order']['
             <div>
                 <label for="formTypeFalse">店頭受け取り<input type="radio" name="type" id="formTypeFalse" value="0" <?php if ($type === "0") echo "checked"; ?>></label>
                 <label for="formTypeTrue">宅配サービス<input type="radio" name="type" id="formTypeTrue" value="1" <?php if ($type === "1") echo "checked"; ?>></label>
-                <?php if (isset($_SESSION['error']['type'])) echo "<div>" . $_SESSION['error']['type'] . "</div>"; ?>
+                <?php if (isset($_SESSION['orderError']['type'])) echo "<div>" . $_SESSION['orderError']['type'] . "</div>"; ?>
             </div>
         </div>
         <div>
             <label for="formName">お名前 : <input type="text" name="name" id="formName" value="<?= $name ?>"></label>
-            <?php if (isset($_SESSION['error']['name'])) echo "<div>" . $_SESSION['error']['name'] . "</div>"; ?>
+            <?php if (isset($_SESSION['orderError']['name'])) echo "<div>" . $_SESSION['orderError']['name'] . "</div>"; ?>
         </div>
         <div>
             <label for="formPrefecture">住所 :
@@ -69,15 +69,15 @@ $addressOther = isset($_SESSION['order']['addressOther']) ? $_SESSION['order']['
                     <?php endforeach; ?>
                 </select>
             </label>
-            <?php if (isset($_SESSION['error']['prefecture'])) echo "<div>" . $_SESSION['error']['prefecture'] . "</div>"; ?>
+            <?php if (isset($_SESSION['orderError']['prefecture'])) echo "<div>" . $_SESSION['orderError']['prefecture'] . "</div>"; ?>
         </div>
         <div>
-            <label for="formAddress">市町村 : <input type="text" name="address" id="formAddress" value="<?= $address ?>"></label>
-            <?php if (isset($_SESSION['error']['address'])) echo "<div>" . $_SESSION['error']['address'] . "</div>"; ?>
+            <label for="formAddress">市町村 : <input type="text" name="address" id="formAddress" value="<?= htmlspecialchars($address)  ?>"></label>
+            <?php if (isset($_SESSION['orderError']['address'])) echo "<div>" . $_SESSION['orderError']['address'] . "</div>"; ?>
         </div>
         <div>
-            <label for="formAddressOther">マンション名など : <input type="text" name="addressOther" id="formAddressOther" value="<?= $addressOther ?>"></label>
-            <?php if (isset($_SESSION['error']['addressOther'])) echo "<div>" . $_SESSION['error']['addressOther'] . "</div>"; ?>
+            <label for="formAddressOther">マンション名など : <input type="text" name="addressOther" id="formAddressOther" value="<?= htmlspecialchars($addressOther) ?>"></label>
+            <?php if (isset($_SESSION['orderError']['addressOther'])) echo "<div>" . $_SESSION['orderError']['addressOther'] . "</div>"; ?>
         </div>
         <div>お届け時間<input type="text" name="datetime" id=""></div>
         <input type="hidden" name="productToken" value="<?= $productToken ?>">
@@ -86,4 +86,4 @@ $addressOther = isset($_SESSION['order']['addressOther']) ? $_SESSION['order']['
 </body>
 
 </html>
-<?php unset($_SESSION['error']) ?>
+<?php unset($_SESSION['orderError']) ?>
