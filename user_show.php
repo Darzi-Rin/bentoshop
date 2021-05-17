@@ -7,7 +7,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>マイページ</title>
 </head>
-<!-- header -->
+
+<!-- nav -->
+<header>
+  <?php require_once '_nav.php'; ?>
+</header>
 
 <!-- 個人情報表示 -->
 <body>
@@ -23,7 +27,7 @@
     } else {  //正常処理
 
       // 都道府県なしver
-      if (!isset($_SESSION['customer']['prefecture'])) {
+      if ($_SESSION['customer']['prefecture'] == '') {
     ?>
       <p>お名前：<?= $_SESSION['customer']['name'] ?></p>
       <p>メールアドレス：<?= $_SESSION['customer']['email'] ?></p>
@@ -32,7 +36,7 @@
     <?php
 
       // 市区町村なしver
-      } elseif (!isset($_SESSION['customer']['address'])) {
+      } elseif ($_SESSION['customer']['address'] == '') {
     ?>
       <p>お名前：<?= $_SESSION['customer']['name'] ?></p>
       <p>メールアドレス：<?= $_SESSION['customer']['email'] ?></p>
@@ -42,7 +46,7 @@
     <?php
 
       // マンション名なしver
-      } elseif (!isset($_SESSION['customer']['address_other'])) {
+      } elseif ($_SESSION['customer']['address_other'] == '') {
     ?>
       <p>お名前：<?= $_SESSION['customer']['name'] ?></p>
       <p>メールアドレス：<?= $_SESSION['customer']['email'] ?></p>
