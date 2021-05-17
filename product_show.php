@@ -30,7 +30,7 @@
 
     foreach ($result as $row) {
         $name = $row['name'];
-        $price = $row['cost'];
+        $cost = $row['cost'];
         $cal = $row['calorie'];
         $foodstuffs = $row['foodstuffs'];
         $description = $row['description'];
@@ -38,8 +38,8 @@
         $code = $row['code'];
     ?>
         <p><?= $name ?></p>
-        <p><img src="image/<?= $code ?>.jpg" style="width:170px;"></p>
-        <p>￥<?= $price ?></p>
+        <p><img src="image/<?= $code ?>.jpg" style="width:450px;"></p>
+        <p>￥<?= $cost ?></p>
         <p><?= $description; ?></p>
         <p><?= $foodstuffs ?></p>
         <p>カロリー：<?= $cal ?></p>

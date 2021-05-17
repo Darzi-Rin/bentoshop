@@ -33,15 +33,15 @@
         $stmt = $pdo->query($sql);
         foreach ($stmt as $row) {
             $name = $row['name'];
-            $price = $row['cost'];
+            $cost = $row['cost'];
             $code = $row['code'];
 
         ?>
             <tr>
-                <th><?= $name; ?></th>
-                <td><img src="image/<?= $code ?>.jpg" style="width:170px;"></td>
-                <td><?= $price; ?></td>
-                <td><a href='product_show.php?name=<?php echo $name; ?>'>詳細</a>
+                <th><a href='product_show.php?name=<?php echo $name; ?>' style="color: black; text-decoration: none;"><?= $name; ?></a></th>
+                <td><a href='product_show.php?name=<?php echo $name; ?>'><img src="image/<?= $code ?>.jpg" style="width:170px;"></a></td>
+                <td>￥<?= $cost; ?></td>
+                <!-- <td><a href='product_show.php?name=<?php echo $name; ?>'>詳細</a> -->
                 <td>
                     <form action="cart_create.php" method="post">
                         <input type="submit" value="カートに入れる">
