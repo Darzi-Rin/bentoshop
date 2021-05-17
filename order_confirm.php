@@ -49,6 +49,45 @@ if (!isset($_POST['name'])) {
     $_SESSION['order']['name'] = $_POST['name'];
 }
 
+//
+if (!isset($_POST['datetime'])) {
+    $_SESSION['orderError']['datetimeOther'] = "時間が指定されていません。1";
+} else {
+    if (preg_match("/20[0-9][0-9]-[01][0-9]-[0-3][0-9] [012][0-9]:00/", $_POST['datetime']) !== 1) {
+        $_SESSION['orderError']['datetimeOther'] = $_POST['datetime'];
+    } else {
+        // POSTされた時間を変換
+        $dateOrTime = explode(' ', $_POST['datetime']);
+        $dateData = explode('-', $dateOrTime[0]);
+        $timeData = explode(':', $dateOrTime[1]);
+
+        // 日付の確認
+        if (date('h') > 21) {
+            if (
+                date('d', strtotime('1 day')) == $dateData[2]
+                && date('m', strtotime('1 day')) == $dateData[1]
+                && date('y', strtotime('1 day')) == $dateData[0]
+                && $timeData[0] >= 5
+                && $timeData[0] <= 21
+            ) {
+                $_SESSION['orderError']['datetimeOther'] = "時間が不正な値です。3";
+            }
+        } else {
+            if (
+                date('d') == $dateData[2]
+                && date('m') == $dateData[1]
+                && date('y') == $dateData[0]
+                && date('h', strtotime('1 hour')) <= $timeData[0]
+                && $timeData[0] >= 5
+                && $timeData[0] <= 21
+            ) {
+                $_SESSION['orderError']['datetimeOther'] = "時間が不正な値です。4";
+            }
+        }
+        $_SESSION['order']['datetime'] = $_POST['datetime'];
+    }
+}
+
 // 配送希望は住所のチェック、それ以外は住所の削除
 if ($_SESSION['order']['type'] === "1") {
     // 都道府県のチェック関東圏のみ
@@ -105,7 +144,6 @@ $productToken = issueToken('productToken');
 </head>
 
 <body>
-    <?php require_once "_nav.php"; ?>
     <h1>確認画面</h1>
     <table>
         <?php if ($_SESSION['order']['type'] === "0") : ?>
@@ -119,7 +157,7 @@ $productToken = issueToken('productToken');
             </tr>
             <tr>
                 <th>お受け取り日時</th>
-                <td></td>
+                <td><?= htmlspecialchars($_SESSION['order']['datetime']) ?></td>
             </tr>
         <?php else :  ?>
             <tr>
@@ -143,12 +181,11 @@ $productToken = issueToken('productToken');
                 <td><?= htmlspecialchars($_SESSION['order']['addressOther']) ?></td>
             </tr>
             <tr>
-                <th>お受け取り日時</th>
-                <td></td>
+                <th>配送希望日時</th>
+                <td><?= htmlspecialchars($_SESSION['order']['datetime']) ?></td>
             </tr>
         <?php endif; ?>
         <tr>
-            <td><input type="submit" value="戻る"></td>
             <td>
                 <form action="./order_create.php" method="POST">
                     <input type="hidden" name="orderToken" value="<?= $orderToken ?>">

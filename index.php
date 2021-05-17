@@ -1,7 +1,10 @@
 <?php
 session_start();
 
+// データベースにアクセス
 require_once "_db_access.php";
+
+// おすすめ商品
 try {
     $sql = "SELECT * FROM products WHERE stock >= 0 AND code like '00101%' ORDER BY stock DESC LIMIT 5";
     $stmt = $pdo->query($sql);
@@ -14,30 +17,26 @@ try {
     $productListError = "読み込みに失敗しました。";
     echo $e->getMessage();
 }
-// if (isset($_SESSION['customer'])) {
-//     try {
-// $sql = "
-// SELECT OI,  FROM purchases 
-// WHERE site_user = :site_user 
-// JOIN orders 
-// ON orders.id as OI = purchases.order_id as POI
-// JOIN products 
-// ON products.code as PC = purchases.product_code as PPC";
 
-// $stmt = $pdo->prepare($sql);
-// $stmt->bindValue(':site_user', $_SESSION['customer']['id'], PDO::PARAM_INT);
-// $stmt->execute();
-// if ($stmt) {
-//     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-//         $yetPayList[$row['OI']] = array("id" > $row['OI'], "name" => $row['name']);
-//     }
-//     if (isset($productsList)) {
-//         $messageList = "料金の支払いがお済みでない注文があります。";
-//     }
-// }
-// } catch (Exception $e) {
-// }
-// }
+// ログインしていたら注文情報を取得
+if (isset($_SESSION['customer'])) {
+    try {
+        $sql = "
+        SELECT id FROM orders 
+        WHERE site_user_id = :site_user 
+        AND paid_date_time IS NULL
+        AND order_date_time < CURDATE() + 1
+        AND order_date_time > CURDATE();";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':site_user', $_SESSION['customer']['id'], PDO::PARAM_INT);
+        $stmt->execute();
+        if ($stmt && $row = $stmt->fetch(PDO::FETCH_ASSOC)) $yetPayMessage = "料金の支払いがお済みでない注文があります。";
+    } catch (Exception $e) {
+        $yetPayMessageError = "読み込みに失敗しました。";
+        echo $e->getMessage();
+    }
+}
 
 ?>
 
