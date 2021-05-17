@@ -16,7 +16,7 @@
 <?php
 if (!empty($_SESSION['products'])) {
 ?>
-    <table>
+    <table>code
 		<th>　　　　</th>
 		<th>商品名</th>
 		<th>価格</th>
@@ -24,15 +24,15 @@ if (!empty($_SESSION['products'])) {
 		<th>小計</th>
 		<?php
 		$total = 0;
-		foreach ($_SESSION['products'] as $id => $product) {
+		foreach ($_SESSION['products'] as $code => $product) {
 		?>
 			<tr>
 				<td><?= $id ?></td>
 				<td><a href="product_show.php?id=<?= $id ?>"><?= $product['name'] ?></a></td>
-				<td><?= $product['price'] ?></td>
+				<td><?= $product['cost'] ?></td>
 				<td><?= $product['count'] ?></td>
 				<?php
-				$subtotal = $product['price'] * $product[''];
+				$subtotal = $product['cost'] * $product[''];
 				$total += $subtotal;
 				?>
 				<td><?= $subtotal ?></td>
