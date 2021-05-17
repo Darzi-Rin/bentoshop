@@ -13,6 +13,12 @@
     <?php require "_nav.php"; ?>
     <br>
 
+    <a href="product.php" style="text-decoration: none;">メニュー一覧</a>
+    <a href="product_lunch_box.php" style="text-decoration: none;">お弁当</a>
+    <a href="product_side_dishes.php" style="text-decoration: none;">おかず</a>
+    <a href="product_side_menu.php" style="text-decoration: none;">サイド</a>
+    <a href="product_event_menu.php" style="text-decoration: none;">イベント</a>
+
 
     <?php
     require "_db_access.php";
@@ -24,19 +30,23 @@
 
     foreach ($result as $row) {
         $name = $row['name'];
-        $price = $row['cost'];
+        $cost = $row['cost'];
         $cal = $row['calorie'];
+        $foodstuffs = $row['foodstuffs'];
         $description = $row['description'];
         $stock = $row['stock'];
+        $code = $row['code'];
     ?>
-        <p>商品名：<?= $name ?></p>
-        <p>￥<?= $price ?></p>
+        <p><?= $name ?></p>
+        <p><img src="image/<?= $code ?>.jpg" style="width:450px;"></p>
+        <p>￥<?= $cost ?></p>
         <p><?= $description; ?></p>
+        <p><?= $foodstuffs ?></p>
         <p>カロリー：<?= $cal ?></p>
         <p>在庫：<?= $stock ?></p>
         <form action="cart_create.php" method="post">
             <input type="submit" value="カートに入れる">
-            <input type="hidden" name="product_code" value="<?php $code ?>">
+            <input type="hidden" name="product_code" value="<?= $code ?>">
         </form>
 
 
