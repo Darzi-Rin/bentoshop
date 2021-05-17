@@ -26,30 +26,35 @@
       //SQL文を作成
 
       // nullで送るか、空の状態で送るか用相談
-      $sql = "INSERT INTO site_users VALUES(null , :email  , :password , :name , null , null , null)";
+      $sql = "INSERT INTO site_users VALUES(null , :email  , :password , :name , :prefecture , :address , :address_other)";
       //プリペアードステートメントを作成
       $stm = $pdo->prepare($sql);
       $stm->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
       $stm->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
       $stm->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
+      $stm->bindValue(':prefecture', '', PDO::PARAM_STR);
+      $stm->bindValue(':address', '', PDO::PARAM_STR);
+      $stm->bindValue(':address_other', '', PDO::PARAM_STR);
       //SQLを実行
       $stm->execute();
       echo "お客様情報を登録しました。";
     } elseif ($_SESSION['customer']['address'] == '') {
       //SQL文を作成
-      $sql = "INSERT INTO site_users VALUES(null , :email  , :password , :name , :prefecture , null , null)";
+      $sql = "INSERT INTO site_users VALUES(null , :email  , :password , :name , :prefecture , :address , :address_other)";
       //プリペアードステートメントを作成
       $stm = $pdo->prepare($sql);
       $stm->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
       $stm->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
       $stm->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
       $stm->bindValue(':prefecture', $_POST['prefecture'], PDO::PARAM_STR);
+      $stm->bindValue(':address', '', PDO::PARAM_STR);
+      $stm->bindValue(':address_other', '', PDO::PARAM_STR);
       //SQLを実行
       $stm->execute();
       echo "お客様情報を登録しました。";
     } elseif ($_SESSION['customer']['address_other'] == '') {
       //SQL文を作成
-      $sql = "INSERT INTO site_users VALUES(null , :email  , :password , :name , :prefecture , :address , null)";
+      $sql = "INSERT INTO site_users VALUES(null , :email  , :password , :name , :prefecture , :address , :address_other)";
       //プリペアードステートメントを作成
       $stm = $pdo->prepare($sql);
       $stm->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
@@ -57,6 +62,7 @@
       $stm->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
       $stm->bindValue(':prefecture', $_POST['prefecture'], PDO::PARAM_STR);
       $stm->bindValue(':address', $_POST['address'], PDO::PARAM_STR);
+      $stm->bindValue(':address_other', '', PDO::PARAM_STR);
       //SQLを実行
       $stm->execute();
       echo "お客様情報を登録しました。";

@@ -60,6 +60,9 @@
               <p><input type="hidden" name="name" value="<?= $_SESSION['customer']['name'] ?>"></p>
               <p><input type="hidden" name="email" value="<?= $_SESSION['customer']['email'] ?>"></p>
               <p><input type="hidden" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
+              <p><input type="hidden" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
+              <p><input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
+              <p><input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>"></p>
             </form>
           <?php
           } elseif ($_SESSION['customer']['address'] == '') {
@@ -77,6 +80,8 @@
               <p><input type="hidden" name="email" value="<?= $_SESSION['customer']['email'] ?>"></p>
               <p><input type="hidden" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
               <p><input type="hidden" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
+              <p><input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
+              <p><input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>"></p>
             </form>
           <?php
           } elseif ($_SESSION['customer']['address_other'] == '') {
@@ -96,6 +101,7 @@
               <p><input type="hidden" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
               <p><input type="hidden" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
               <p><input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
+              <p><input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>"></p>
             </form>
           <?php
           } else {
