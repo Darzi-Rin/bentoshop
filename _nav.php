@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="navi.css">
+</head>
+<body>
 <nav id ="global_navi">
     <!-- <a href="toppage.php">トップ</a> -->
     <a href="product.php">メニュー</a>
@@ -31,11 +33,9 @@ if (isset($_SESSION['customer'])) {
 if (!(isset($_SESSION['customer']))) {
 ?>
 <a href="user_new.php">会員登録</a>
-</nav>
 <?php
 }
 ?>
-</head>
-<body>
+</nav>
 </body>
 </html>

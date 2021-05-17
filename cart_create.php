@@ -27,8 +27,10 @@
 		'count' => $count + $_REQUEST['count']
 	];
 	?>
-	<hr>
 
 </body>
-
+<a href="cart_show.php"><br><br>
+	<input type="submit" value="カートに進む"></a>
+<a href="product.php"><br><br>
+	<input type="submit" value="メニュー一覧に戻る"></a>
 </html>

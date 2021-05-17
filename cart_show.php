@@ -1,5 +1,5 @@
-
 <?php session_start(); ?>
+<?php require '_login_check.php'?>
 <!DOCTYPE html>
 <html>
 
@@ -7,19 +7,17 @@
     <meta charset="UTF-8">
     <title>買い物かご画面</title>
     <link rel="stylesheet" href="navi.css">
-    <?php
-    require '_nav.php'; 
-    ?>
 
 </head>
 <br>
 <body>
     <sign>
+    <?php require '_nav.php'; ?>
 <?php
 if (!empty($_SESSION['products'])) {
 ?>
     <table>
-		<th>商品番号</th>
+		<th>　　　　</th>
 		<th>商品名</th>
 		<th>価格</th>
 		<th>個数</th>
@@ -34,7 +32,7 @@ if (!empty($_SESSION['products'])) {
 				<td><?= $product['price'] ?></td>
 				<td><?= $product['count'] ?></td>
 				<?php
-				$subtotal = $product['price'] * $product['count'];
+				$subtotal = $product['price'] * $product[''];
 				$total += $subtotal;
 				?>
 				<td><?= $subtotal ?></td>
@@ -58,9 +56,14 @@ if (!empty($_SESSION['products'])) {
     カートに商品がありません。
 <?php
 }
+if(isset($_SESSION['orderError'])) {
+foreach($_SESSION['orderError']as $key => $item){
+?>
+<p><?= $item ?></p>
+<?php
+}}
 ?>
     </sign>
 </body>
 
 </html>
-

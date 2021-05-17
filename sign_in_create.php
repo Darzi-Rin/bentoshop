@@ -35,10 +35,15 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>ログイン画面</title>
 	<link rel="stylesheet" href="navi.css">
+	<title>ログイン画面</title>
 </head>
+<header>
+</header>
 <body>
+<br>
+<?php require_once '_nav.php'; ?>
+<?php require '_db_access.php'; ?>
 	<?php
 	if (isset($_SESSION['customer'])) {
 		echo 'いらっしゃいませ、', $_SESSION['customer']['name'], 'さん。';
@@ -46,7 +51,8 @@
 		echo 'ログイン名またはパスワードが違います。';
 	}
 	?>
-	<a href="index.php">トップ</a>
+	<a href="index.php"><br><br>
+	<input type="submit" value="トップ画面に戻る"></a>
 </body>
 
 </html>
