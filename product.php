@@ -37,7 +37,7 @@
         foreach ($stmt as $row) {
             $name = $row['name'];
             $price = $row['cost'];
-            // $code = $row['code']; //仮
+            $code = $row['code']; //仮
 
         ?>
 

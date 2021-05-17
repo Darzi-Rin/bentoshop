@@ -35,12 +35,12 @@
 
         require "_db_access.php";
 
-        $sql = "select * from products where code=3";
+        $sql = "select * from products where code like '___3%'";
         $stmt = $pdo->query($sql);
         foreach ($stmt as $row) {
             $name = $row['name'];
             $price = $row['cost'];
-            // $code = $row['code'];
+            $code = $row['code'];
 
         ?>
             <tr>
