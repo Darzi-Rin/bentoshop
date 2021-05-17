@@ -1,7 +1,7 @@
 <?php
 session_start();
 // ログインのチェック
-require "_login_check.php";
+require_once "_login_check.php";
 
 require_once "_token.php";
 
@@ -19,7 +19,6 @@ if (isset($_SESSION['orderError'])) {
     header("Location: ./cart_show.php");
     exit();
 }
-$productToken = issueToken('productToken');
 
 // 受け取りtypeのチェック
 if (!isset($_POST['type'])) {
@@ -92,6 +91,7 @@ if (isset($_SESSION['orderError'])) {
     exit();
 }
 $orderToken = issueToken('orderToken');
+$productToken = issueToken('productToken');
 ?>
 
 <!-- view -->
@@ -105,6 +105,7 @@ $orderToken = issueToken('orderToken');
 </head>
 
 <body>
+    <?php require_once "_nav.php"; ?>
     <h1>確認画面</h1>
     <table>
         <?php if ($_SESSION['order']['type'] === "0") : ?>
@@ -114,7 +115,7 @@ $orderToken = issueToken('orderToken');
             </tr>
             <tr>
                 <th>お名前</th>
-                <td><?= $_SESSION['order']['name'] ?></td>
+                <td><?= htmlspecialchars($_SESSION['order']['name']) ?></td>
             </tr>
             <tr>
                 <th>お受け取り日時</th>
@@ -127,7 +128,7 @@ $orderToken = issueToken('orderToken');
             </tr>
             <tr>
                 <th>お名前</th>
-                <td><?= $_SESSION['order']['name'] ?></td>
+                <td><?= htmlspecialchars($_SESSION['order']['name']) ?></td>
             </tr>
             <tr>
                 <th>都道府県</th>
@@ -135,11 +136,11 @@ $orderToken = issueToken('orderToken');
             </tr>
             <tr>
                 <th>市町村</th>
-                <td><?= $_SESSION['order']['address'] ?></td>
+                <td><?= htmlspecialchars($_SESSION['order']['address']) ?></td>
             </tr>
             <tr>
                 <th>マンション名</th>
-                <td><?= $_SESSION['order']['addressOther'] ?></td>
+                <td><?= htmlspecialchars($_SESSION['order']['addressOther']) ?></td>
             </tr>
             <tr>
                 <th>お受け取り日時</th>

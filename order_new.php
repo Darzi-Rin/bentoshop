@@ -9,9 +9,11 @@ session_start();
 // $_SESSION['product']['00010000']['count'] = 3;
 // $_SESSION['product']['00010001']['count'] = 3;
 // ログインの確認
-require "_login_check.php";
+require_once "_login_check.php";
 
-require "_token.php";
+require_once "_token.php";
+
+// 購入ページの識別
 $productToken = issueToken('productToken');
 
 
@@ -19,7 +21,7 @@ $productToken = issueToken('productToken');
 if (
     !isset($_SESSION['product'])
 ) {
-    header("Location: ./index.php");
+    header("Location: ./cart_show.php");
     exit();
 }
 
@@ -47,6 +49,7 @@ $addressOther = isset($_SESSION['order']['addressOther']) ? $_SESSION['order']['
 </head>
 
 <body>
+    <?php require_once "_nav.php"; ?>
     <h1>仮フォーム</h1>
     <form action="./order_confirm.php" method="POST">
         <div>受け取り方法 :

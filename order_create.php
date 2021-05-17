@@ -2,7 +2,7 @@
 session_start();
 
 // ログインのチェック
-require "_login_check.php";
+require_once "_login_check.php";
 
 // トークンとカートの確認
 require_once "_token.php";
@@ -140,6 +140,7 @@ if (isset($_SESSION['orderError'])) {
 </head>
 
 <body>
+    <?php require_once "_nav.php"; ?>
     <h1>購入が完了しました</h1>
     <p>までにお支払いをお願いいたします</p>
 </body>
