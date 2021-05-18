@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php require '_login_check.php'?>
 <!DOCTYPE html>
 <html>
