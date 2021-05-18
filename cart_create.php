@@ -18,7 +18,7 @@
 		$_SESSION['products'] = [];
 	}
 	$count = 0;
-	if (isset($_SESSION['products'][$id])) {
+	if (isset($_SESSION['products'][$code])) {
 		$count = $_SESSION['products'][$code]['count'];
 	}
 	$_SESSION['products'][$code] = [
@@ -33,4 +33,6 @@
 	<input type="submit" value="カートに進む"></a>
 <a href="product.php"><br><br>
 	<input type="submit" value="メニュー一覧に戻る"></a>
+<a href="order_new.php"><br><br>
+    <input type="submit" value="購入"></a>
 </html>

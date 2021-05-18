@@ -16,7 +16,7 @@
 <?php
 if (!empty($_SESSION['products'])) {
 ?>
-    <table>code
+    <table>
 		<th>　　　　</th>
 		<th>商品名</th>
 		<th>価格</th>
@@ -27,16 +27,16 @@ if (!empty($_SESSION['products'])) {
 		foreach ($_SESSION['products'] as $code => $product) {
 		?>
 			<tr>
-				<td><?= $id ?></td>
-				<td><a href="product_show.php?id=<?= $id ?>"><?= $product['name'] ?></a></td>
+				<td><?= $code ?></td>
+				<td><a href="product_show.php?name=<?=$product['name']?>"><?= $product['name'] ?></a></td>
 				<td><?= $product['cost'] ?></td>
 				<td><?= $product['count'] ?></td>
 				<?php
-				$subtotal = $product['cost'] * $product[''];
+				$subtotal = $product['cost'] * $product['count'];
 				$total += $subtotal;
 				?>
 				<td><?= $subtotal ?></td>
-				<td><a href="cart_destroy.php?id=<?= $id ?>">削除</a></td>
+				<td><a href="cart_destroy.php?code=<?= $code ?>">削除</a></td>
 			</tr>
 		<?php
 		}
