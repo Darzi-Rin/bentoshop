@@ -10,9 +10,18 @@
 </head>
 <body>
 <nav id ="global_navi">
-    <!-- <a href="toppage.php">トップ</a> -->
+    <a href="index.php">トップページ</a>
     <a href="product.php">メニュー</a>
     <a href="cart_show.php">カート</a>
+
+    <?php //ログイン前は表示されないように処理
+if (isset($_SESSION['customer'])) {
+?>
+    <a href="user_show.php">ユーザーページ</a>
+<?php
+}
+?>
+
 <?php //ログイン後は表示されないように処理
 if (!(isset($_SESSION['customer']))) {
 ?>
@@ -28,6 +37,7 @@ if (isset($_SESSION['customer'])) {
 <?php
 }
 ?>
+
 
 <?php //ログイン後は表示されないように処理
 if (!(isset($_SESSION['customer']))) {
