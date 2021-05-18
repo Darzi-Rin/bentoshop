@@ -26,6 +26,9 @@
 		'cost' => $_REQUEST['cost'],
 		'count' => $count + $_REQUEST['count']
 	];
+	require_once "_token.php";
+
+	$productToken = issueToken('productToken');
 	?>
 
 </body>
