@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>買い物かご画面</title>
-    <link rel="stylesheet" href="css/topNav.css">
-    <link rel="stylesheet" href="css/navi.css">
+    <link rel="stylesheet" type="text/css" href="css/topNav.css">
+    <link rel="stylesheet" type="text/css" href="css/navi.css">
 </head>
 <br>
 <br>

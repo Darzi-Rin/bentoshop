@@ -35,8 +35,8 @@ foreach ($result as $row) {
 
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/topNav.css">
-	<link rel="stylesheet" href="css/navi.css">
+	<link rel="stylesheet" type="text/css" href="css/topNav.css">
+	<link rel="stylesheet" type="text/css" href="css/navi.css">
 	<title>ログイン画面</title>
 </head>
 

@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/typeLnav.css">
-    <link rel="stylesheet" href="css/navi.css">
-    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" type="text/css" href="css/typeLnav.css">
+    <link rel="stylesheet" type="text/css" href="css/navi.css">
+    <link rel="stylesheet" type="text/css" href="css/product.css">
     <title>お弁当</title>
 </head>
 

@@ -73,8 +73,8 @@ if (isset($_SESSION['customer'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/topNav.css">
-    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" type="text/css" href="css/topNav.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
     <title>トップ</title>
 </head>
 
