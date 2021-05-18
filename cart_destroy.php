@@ -13,7 +13,7 @@
 <body>
     <?php require '_nav.php'; ?>
     <?php
-    unset($_SESSION['products'][$_REQUEST['id']]);
+    unset($_SESSION['products'][$_REQUEST['code']]);
     ?>
     カートから商品を削除しました。
     <hr>
