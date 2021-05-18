@@ -25,7 +25,7 @@
 			'email' => $row['email'],
 			'prefecture' => $row['prefecture'],
 			'address' => $row['address'], 
-			'address_other' => $row['address_other']
+			'addressOther' => $row['addressOther']
 		];
 	}
 ?>

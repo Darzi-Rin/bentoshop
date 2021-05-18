@@ -18,7 +18,7 @@
 		$_SESSION['products'] = [];
 	}
 	$count = 0;
-	if (isset($_SESSION['products'][$id])) {
+	if (isset($_SESSION['products'][$code])) {
 		$count = $_SESSION['products'][$code]['count'];
 	}
 	$_SESSION['products'][$code] = [
