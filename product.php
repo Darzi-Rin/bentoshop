@@ -42,9 +42,9 @@
                 <td>
                     <form action="cart_create.php" method="post">
                         <input type="hidden" name="count" value="1">
-                        <input type="hidden" name="code" value="<?= $row['code'] ?>">
+                        <input type="hidden" name="id" value="<?= $row['code'] ?>">
                         <input type="hidden" name="name" value="<?= $row['name'] ?>">
-                        <input type="hidden" name="cost" value="<?= $row['cost'] ?>">
+                        <input type="hidden" name="price" value="<?= $row['cost'] ?>">
                         <input type="submit" value="カートに入れる">
                     </form>
                 </td>
