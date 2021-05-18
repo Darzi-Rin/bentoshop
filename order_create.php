@@ -15,7 +15,7 @@ if (isset($_POST['orderToken']) && !checkToken('orderToken', $postOrderToken)) {
 }
 if (!isset($_SESSION['products'])) {
     $_SESSION['orderError']['noProduct'] = "カートに商品がありません。\n\rカートをご確認ください。";
-} else if (count($_SESSION['product']) < 1) {
+} else if (count($_SESSION['products']) < 1) {
     $_SESSION['orderError']['noProduct'] = "カートに商品がありません。\n\rカートをご確認ください。";
 }
 $postProductToken = isset($_POST['productToken']) ? $_POST['productToken'] : NULL;
@@ -29,7 +29,7 @@ if (!isset($_SESSION['orderError'])) {
     // データベース接続
     require_once "_db_access.php";
 
-    ksort($_SESSION['products']);
+    // ksort($_SESSION['products']);
     try {
         // トランザクションの開始
         if ($pdo->beginTransaction()) {

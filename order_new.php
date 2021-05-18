@@ -2,13 +2,13 @@
 date_default_timezone_set('Asia/Tokyo');
 session_start();
 // 仮データ
-$_SESSION['customer']['id'] = 1;
-$_SESSION['customer']['name'] = "たまきさま";
-$_SESSION['customer']['prefecture'] = "埼玉県";
-$_SESSION['customer']['address'] = "越谷市";
-$_SESSION['customer']['addressOther'] = "";
-$_SESSION['products']['00010000']['count'] = 3;
-$_SESSION['products']['00010001']['count'] = 3;
+// $_SESSION['customer']['id'] = 1;
+// $_SESSION['customer']['name'] = "たまきさま";
+// $_SESSION['customer']['prefecture'] = "埼玉県";
+// $_SESSION['customer']['address'] = "越谷市";
+// $_SESSION['customer']['addressOther'] = "";
+// $_SESSION['products']['00010000']['count'] = 3;
+// $_SESSION['products']['00010001']['count'] = 3;
 // ログインの確認
 require_once "_login_check.php";
 
