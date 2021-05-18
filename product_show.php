@@ -49,7 +49,7 @@
         ?>
 
         <p><?= $name ?></p>
-        <p><img src="image/<?= $code ?>.jpg" style="width:450px;"></p>
+        <p><img src="./imgs/<?= $code ?>.jpg" alt="" style="width:450px;"></p>
         <p>￥<?= $cost ?></p>
         <p><?= $description; ?></p>
         <p>材料：<?= $foodstuffs ?></p>

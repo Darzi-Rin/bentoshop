@@ -39,7 +39,7 @@
         ?>
             <tr>
                 <th><a href='product_show.php?name=<?php echo $name; ?>' style="color: black; text-decoration: none;"><?= $name; ?></a></th>
-                <td><a href='product_show.php?name=<?php echo $name; ?>'><img src="image/<?= $code ?>.jpg" style="width:170px;"></a></td>
+                <td><a href='product_show.php?name=<?php echo $name; ?>'><img src="./imgs/<?= $code ?>.jpg" alt="" style="width:170px;"></a></td>
                 <td>￥<?= $cost; ?></td>
                 <!-- <td><a href='product_show.php?name=<?php echo $name; ?>'>詳細</a> -->
                 <td>
