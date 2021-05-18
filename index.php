@@ -73,53 +73,59 @@ if (isset($_SESSION['customer'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/topNav.css">
+    <link rel="stylesheet" href="css/table.css">
     <title>トップ</title>
 </head>
 
 <body>
-    <?php require_once "_nav.php"; ?>
-    <h1>お弁当屋</h1>
-    <h2>お知らせ</h2>
-    <h2>現在の混雑度</h2>
-    <?php if (isset($busyList)) : ?>
-        <table border="1">
-            <tr>
-                <?php foreach ($busyList as $key => $item) : ?>
-                    <th><?= $key ?></th>
-                <?php endforeach; ?>
-            </tr>
-            <tr>
-                <?php foreach ($busyList as $key => $item) : ?>
-                    <?php if ($item === -1) : ?>
-                        <td>受付終了</td>
-                    <?php elseif ($item < 3) : ?>
-                        <td>平常</td>
-                    <?php elseif ($item < 6) : ?>
-                        <td>やや混雑</td>
-                    <?php else : ?>
-                        <td>大変混雑</td>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </tr>
-        </table>
-    <?php endif; ?>
-    <h2>おすすめ商品</h2>
-    <?php if (isset($productsList)) : ?>
-        <table border="1">
-            <tr>
-                <?php foreach ($productsList as $key => $item) : ?>
-                    <th><a href="./product_show.php?name=<?= $item['name'] ?>"><?= $item['name'] ?></a></th>
-                <?php endforeach; ?>
-            </tr>
-            <tr>
-                <?php foreach ($productsList as $key => $item) : ?>
-                    <td><a href="./product_show.php?name=<?= $item['name'] ?>"><img src="./imgs/<?= $item['code'] ?>.jpg" alt=""></a></td>
-                <?php endforeach; ?>
-            </tr>
-        </table>
-    <?php else : ?>
-        <p><?php if (isset($productListError)) echo $productListError ?></p>
-    <?php endif; ?>
+    <header class="topNav">
+        <?php require_once "_nav.php"; ?>
+    </header>
+    <div class="content">
+        <h1>お弁当屋</h1>
+        <h2>お知らせ</h2>
+        <h2>現在の混雑度</h2>
+        <?php if (isset($busyList)) : ?>
+            <table border="1">
+                <tr>
+                    <?php foreach ($busyList as $key => $item) : ?>
+                        <th><?= $key ?></th>
+                    <?php endforeach; ?>
+                </tr>
+                <tr>
+                    <?php foreach ($busyList as $key => $item) : ?>
+                        <?php if ($item === -1) : ?>
+                            <td>受付終了</td>
+                        <?php elseif ($item < 3) : ?>
+                            <td>平常</td>
+                        <?php elseif ($item < 6) : ?>
+                            <td>やや混雑</td>
+                        <?php else : ?>
+                            <td>大変混雑</td>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </tr>
+            </table>
+        <?php endif; ?>
+        <h2>おすすめ商品</h2>
+        <?php if (isset($productsList)) : ?>
+            <table border="1">
+                <tr>
+                    <?php foreach ($productsList as $key => $item) : ?>
+                        <th><a href="./product_show.php?name=<?= $item['name'] ?>"><?= $item['name'] ?></a></th>
+                    <?php endforeach; ?>
+                </tr>
+                <tr>
+                    <?php foreach ($productsList as $key => $item) : ?>
+                        <td><a href="./product_show.php?name=<?= $item['name'] ?>"><img src="./imgs/<?= $item['code'] ?>.jpg" alt="" style="width:170px;"></a></td>
+                    <?php endforeach; ?>
+                </tr>
+            </table>
+        <?php else : ?>
+            <p><?php if (isset($productListError)) echo $productListError ?></p>
+        <?php endif; ?>
+    </div>
 </body>
 
 </html>

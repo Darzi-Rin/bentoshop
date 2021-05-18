@@ -1,0 +1,36 @@
+.localNav{
+    padding-top: 50px;
+    border-bottom: 1px solid #ccc;
+    }
+    .localNav ul{
+    display: table;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    text-align: center;
+    }
+    .localNav ul li{
+    display: table-cell;
+    min-width: 50px;
+    border-right: 1px solid #ccc;
+    }
+    .localNav ul li:first-child{
+    border-left: 1px solid #ccc;
+    }
+    .localNav ul li a{
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    }
+    .localNav ul li a:hover{
+        background-color: #eee;
+    border-bottom: 5px solid #81817f;
+    }
+    .localNav ul li.curren{
+    font-weight: bold;
+    }
+    .localNav ul li.curren a{
+    border-bottom: 5px solid #2b2929;
+    }
