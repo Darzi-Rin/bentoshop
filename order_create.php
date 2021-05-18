@@ -110,6 +110,8 @@ if (!isset($_SESSION['orderError'])) {
 if (isset($_SESSION['orderError'])) {
     header("Location: ./cart_show.php");
     exit();
+} else {
+    unset($_SESSION['orderError']);
 }
 ?>
 <!-- view -->
