@@ -55,7 +55,7 @@
             <p><?= $description; ?></p>
             <p>材料：<?= $foodstuffs ?></p>
             <p>カロリー：<?= $cal ?></p>
-            <p>在庫：<?= $stock ?></p>
+            <p>残り<?= $stock ?>個</p>
             <p>個数: <select name="count">
                     <?php
                     for ($i = 1; $i <= 10; $i++) {
