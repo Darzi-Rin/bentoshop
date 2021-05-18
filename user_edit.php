@@ -25,7 +25,7 @@
             <p>パスワード：<input type="text" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
             <p>都道府県：<input type="hidden" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
             <input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>">
-            <input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>">
+            <input type="hidden" name="addressOther" value="<?= $_SESSION['customer']['addressOther'] ?>">
             <p><a href="user_update.php"><input type="submit" value="変更する"></a></p>
         </form>
     <?php
@@ -40,13 +40,13 @@
             <p>パスワード：<input type="text" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
             <p>都道府県：<input type="text" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
             <input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>">
-            <input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>">
+            <input type="hidden" name="addressOther" value="<?= $_SESSION['customer']['addressOther'] ?>">
             <p><a href="user_update.php"><input type="submit" value="変更する"></a></p>
         </form>
     <?php
 
         // マンション名なしver
-    } elseif ($_SESSION['customer']['address_other'] == '') {
+    } elseif ($_SESSION['customer']['addressOther'] == '') {
     ?>
         <form action="user_update.php" method="post">
             <input type="hidden" name="id" value="<?= $_SESSION['cutomer']['id'] ?>">
@@ -55,7 +55,7 @@
             <p>パスワード：<input type="text" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
             <p>都道府県：<input type="text" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
             <p>市区町村：<input type="text" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
-            <input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>">
+            <input type="hidden" name="addressOther" value="<?= $_SESSION['customer']['addressOther'] ?>">
             <p><a href="user_update.php"><input type="submit" value="変更する"></a></p>
         </form>
     <?php
@@ -68,7 +68,7 @@
             <p>パスワード：<input type="text" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
             <p>都道府県：<input type="text" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
             <p>市区町村：<input type="text" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
-            <p>マンション名：<input type="text" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>"></p>
+            <p>マンション名：<input type="text" name="addressOther" value="<?= $_SESSION['customer']['addressOther'] ?>"></p>
             <p><a href="user_update.php"><input type="submit" value="変更する"></a></p>
         </form>
     <?php

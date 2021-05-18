@@ -46,7 +46,7 @@
     <?php
 
       // マンション名なしver
-      } elseif ($_SESSION['customer']['address_other'] == '') {
+      } elseif ($_SESSION['customer']['addressOther'] == '') {
     ?>
       <p>お名前：<?= $_SESSION['customer']['name'] ?></p>
       <p>メールアドレス：<?= $_SESSION['customer']['email'] ?></p>
@@ -62,7 +62,7 @@
       <p>メールアドレス：<?= $_SESSION['customer']['email'] ?></p>
       <p>都道府県：<?= $_SESSION['customer']['prefecture'] ?></p>
       <p>市区町村：<?= $_SESSION['customer']['address'] ?></p>
-      <p>マンション名：<?= $_SESSION['customer']['address_other'] ?></p>
+      <p>マンション名：<?= $_SESSION['customer']['addressOther'] ?></p>
       <p><a href="user_show_log.php"><input type="submit" value="購入履歴へ"></a></p>
       <p><a href="user_edit.php"><input type="submit" value="登録情報変更"></a></p>
     <?php

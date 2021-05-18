@@ -34,7 +34,7 @@
       <p>パスワード<br><input type="password" name="password"></p>
       <p>都道府県（任意）<br><input type="prefecture" name="prefecture"></p>
       <p>市区町村（任意）<br><input type="text" name="address"></p>
-      <p>マンション名その他（任意）<br><input type="text" name="address_other"></p>
+      <p>マンション名その他（任意）<br><input type="text" name="addressOther"></p>
       <!-- 確認画面へ遷移 -->
       <p><a href='user_confirm.php'><input type='submit' value='確認画面'></a></p>
     </form>

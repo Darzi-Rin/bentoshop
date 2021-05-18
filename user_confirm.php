@@ -22,7 +22,7 @@
   $_SESSION['customer']['password'] = $_POST['password'];
   $_SESSION['customer']['prefecture'] = $_POST['prefecture'];
   $_SESSION['customer']['address'] = $_POST['address'];
-  $_SESSION['customer']['address_other'] = $_POST['address_other'];
+  $_SESSION['customer']['addressOther'] = $_POST['addressOther'];
   $_SESSION['csrf_token'] = $_POST["csrf_token"];
 
   if (isset($_POST["csrf_token"]) && $_POST["csrf_token"] === $_SESSION['csrf_token']) {
@@ -62,7 +62,7 @@
               <p><input type="hidden" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
               <p><input type="hidden" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
               <p><input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
-              <p><input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>"></p>
+              <p><input type="hidden" name="addressOther" value="<?= $_SESSION['customer']['addressOther'] ?>"></p>
             </form>
           <?php
           } elseif ($_SESSION['customer']['address'] == '') {
@@ -81,10 +81,10 @@
               <p><input type="hidden" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
               <p><input type="hidden" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
               <p><input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
-              <p><input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>"></p>
+              <p><input type="hidden" name="addressOther" value="<?= $_SESSION['customer']['addressOther'] ?>"></p>
             </form>
           <?php
-          } elseif ($_SESSION['customer']['address_other'] == '') {
+          } elseif ($_SESSION['customer']['addressOther'] == '') {
           ?>
             <!-- 表示(マンション名その他なしver) -->
             <p>お名前：<?= $_SESSION['customer']['name'] ?></p>
@@ -101,7 +101,7 @@
               <p><input type="hidden" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
               <p><input type="hidden" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
               <p><input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
-              <p><input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>"></p>
+              <p><input type="hidden" name="addressOther" value="<?= $_SESSION['customer']['addressOther'] ?>"></p>
             </form>
           <?php
           } else {
@@ -112,7 +112,7 @@
             <p>パスワード：<?= $_SESSION['customer']['password'] ?></p>
             <p>都道府県：<?= $_SESSION['customer']['prefecture'] ?></p>
             <p>市区町村：<?= $_SESSION['customer']['address'] ?></p>
-            <p>マンション名：<?= $_SESSION['customer']['address_other'] ?></p>
+            <p>マンション名：<?= $_SESSION['customer']['addressOther'] ?></p>
             <!-- hiddenで隠してpostする -->
             <form action="user_create.php" method="POST">
               <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
@@ -122,7 +122,7 @@
               <p><input type="hidden" name="password" value="<?= $_SESSION['customer']['password'] ?>"></p>
               <p><input type="hidden" name="prefecture" value="<?= $_SESSION['customer']['prefecture'] ?>"></p>
               <p><input type="hidden" name="address" value="<?= $_SESSION['customer']['address'] ?>"></p>
-              <p><input type="hidden" name="address_other" value="<?= $_SESSION['customer']['address_other'] ?>"></p>
+              <p><input type="hidden" name="addressOther" value="<?= $_SESSION['customer']['addressOther'] ?>"></p>
             </form>
     <?php
           }

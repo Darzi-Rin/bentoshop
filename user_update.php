@@ -32,7 +32,7 @@
         $stm->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
         $stm->bindValue(':prefecture', '', PDO::PARAM_STR);
         $stm->bindValue(':address', '', PDO::PARAM_STR);
-        $stm->bindValue(':address_other', '', PDO::PARAM_STR);
+        $stm->bindValue(':addressOther', '', PDO::PARAM_STR);
         $stm->execute();
         // 更新完了のメッセージ
         echo '更新完了しました';
@@ -54,12 +54,12 @@
             $_SESSION['customer'] = [
                 'id' => $row['id'], 'name' => $row['name'], 'email' => $row['email'],
                 'prefecture' => $row['prefecture'], 'address' => $row['address'],
-                'address_other' => $row['address_other'], 'password' => $row['password']
+                'addressOther' => $row['addressOther'], 'password' => $row['password']
             ];
         }
     } elseif ($_SESSION['customer']['address'] == '') {
         // UPDATE文を変数に格納
-        $sql = "UPDATE site_users SET email = :email, password = :password, name = :name, prefecture = :prefecture, address = :address, address_other = :address_other WHERE id = :id";
+        $sql = "UPDATE site_users SET email = :email, password = :password, name = :name, prefecture = :prefecture, address = :address, addressOther = :addressOther WHERE id = :id";
 
         // 更新する値と該当のIDは空のまま、SQL実行の準備をする
         $stm = $pdo->prepare($sql);
@@ -71,7 +71,7 @@
         $stm->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
         $stm->bindValue(':prefecture', $_POST['prefecture'], PDO::PARAM_STR);
         $stm->bindValue(':address', '', PDO::PARAM_STR);
-        $stm->bindValue(':address_other', '', PDO::PARAM_STR);
+        $stm->bindValue(':addressOther', '', PDO::PARAM_STR);
         $stm->execute();
         // 更新完了のメッセージ
         echo '更新完了しました';
@@ -93,12 +93,12 @@
             $_SESSION['customer'] = [
                 'id' => $row['id'], 'name' => $row['name'], 'email' => $row['email'],
                 'prefecture' => $row['prefecture'], 'address' => $row['address'],
-                'address_other' => $row['address_other'], 'password' => $row['password']
+                'addressOther' => $row['addressOther'], 'password' => $row['password']
             ];
         }
-    } elseif ($_SESSION['customer']['address_other'] == '') {
+    } elseif ($_SESSION['customer']['addressOther'] == '') {
         // UPDATE文を変数に格納
-        $sql = "UPDATE site_users SET email = :email, password = :password, name = :name, prefecture = :prefecture, address = :address, address_other = :address_other WHERE id = :id";
+        $sql = "UPDATE site_users SET email = :email, password = :password, name = :name, prefecture = :prefecture, address = :address, addressOther = :addressOther WHERE id = :id";
 
         // 更新する値と該当のIDは空のまま、SQL実行の準備をする
         $stm = $pdo->prepare($sql);
@@ -110,7 +110,7 @@
         $stm->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
         $stm->bindValue(':prefecture', $_POST['prefecture'], PDO::PARAM_STR);
         $stm->bindValue(':address', $_POST['address'], PDO::PARAM_STR);
-        $stm->bindValue(':address_other', '', PDO::PARAM_STR);
+        $stm->bindValue(':addressOther', '', PDO::PARAM_STR);
         $stm->execute();
         // 更新完了のメッセージ
         echo '更新完了しました';
@@ -132,12 +132,12 @@
             $_SESSION['customer'] = [
                 'id' => $row['id'], 'name' => $row['name'], 'email' => $row['email'],
                 'prefecture' => $row['prefecture'], 'address' => $row['address'],
-                'address_other' => $row['address_other'], 'password' => $row['password']
+                'addressOther' => $row['addressOther'], 'password' => $row['password']
             ];
         }
     } else {
         // UPDATE文を変数に格納
-        $sql = "UPDATE site_users SET email = :email, password = :password, name = :name, prefecture = :prefecture, address = :address, address_other = :address_other WHERE id = :id";
+        $sql = "UPDATE site_users SET email = :email, password = :password, name = :name, prefecture = :prefecture, address = :address, addressOther = :addressOther WHERE id = :id";
 
         // 更新する値と該当のIDは空のまま、SQL実行の準備をする
         $stm = $pdo->prepare($sql);
@@ -149,7 +149,7 @@
         $stm->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
         $stm->bindValue(':prefecture', $_POST['prefecture'], PDO::PARAM_STR);
         $stm->bindValue(':address', $_POST['address'], PDO::PARAM_STR);
-        $stm->bindValue(':address_other', $_POST['address_other'], PDO::PARAM_STR);
+        $stm->bindValue(':addressOther', $_POST['addressOther'], PDO::PARAM_STR);
         $stm->execute();
         // 更新完了のメッセージ
         echo '更新完了しました';
@@ -171,7 +171,7 @@
             $_SESSION['customer'] = [
                 'id' => $row['id'], 'name' => $row['name'], 'email' => $row['email'],
                 'prefecture' => $row['prefecture'], 'address' => $row['address'],
-                'address_other' => $row['address_other'], 'password' => $row['password']
+                'addressOther' => $row['addressOther'], 'password' => $row['password']
             ];
         }
     }
