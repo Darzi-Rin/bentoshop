@@ -16,7 +16,7 @@
 if (!empty($_SESSION['products'])) {
 ?>
     <table>
-		<th>　　　　</th>
+		<th>商品コード</th>
 		<th>商品名</th>
 		<th>価格</th>
 		<th>個数</th>

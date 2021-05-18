@@ -38,24 +38,24 @@
 
     foreach ($result as $row) {
     ?>
-        <form action="cart_create.php" method="post">
-            <?php
-            $name = $row['name'];
-            $cost = $row['cost'];
-            $cal = $row['calorie'];
-            $foodstuffs = $row['foodstuffs'];
-            $description = $row['description'];
-            $stock = $row['stock'];
-            $code = $row['code'];
-            ?>
+        <?php
+        $name = $row['name'];
+        $cost = $row['cost'];
+        $code = $row['code'];
+        $cal = $row['calorie'];
+        $foodstuffs = $row['foodstuffs'];
+        $description = $row['description'];
+        $stock = $row['stock'];
+        ?>
 
-            <p><?= $name ?></p>
-            <p><img src="image/<?= $code ?>.jpg" style="width:450px;"></p>
-            <p>￥<?= $cost ?></p>
-            <p><?= $description; ?></p>
-            <p>材料：<?= $foodstuffs ?></p>
-            <p>カロリー： <?= $cal ?></p>
-            <p>残り <?= $stock ?>個</p>
+        <p><?= $name ?></p>
+        <p><img src="image/<?= $code ?>.jpg" style="width:450px;"></p>
+        <p>￥<?= $cost ?></p>
+        <p><?= $description; ?></p>
+        <p>材料：<?= $foodstuffs ?></p>
+        <p>カロリー： <?= $cal ?></p>
+        <p>残り <?= $stock ?>個</p>
+        <form action="cart_create.php" method="post">
             <p>個数: <select name="count">
                     <?php
                     for ($i = 1; $i <= 10; $i++) {
@@ -67,9 +67,9 @@
                 </select>
             </p>
 
-            <input type="hidden" name="cost" value="<?= $row['code'] ?>">
+            <input type="hidden" name="code" value="<?= $row['code'] ?>">
             <input type="hidden" name="name" value="<?= $row['name'] ?>">
-            <input type="hidden" name="code" value="<?= $row['cost'] ?>">
+            <input type="hidden" name="cost" value="<?= $row['cost'] ?>">
 
             <input type="submit" value="カートに入れる">
 
