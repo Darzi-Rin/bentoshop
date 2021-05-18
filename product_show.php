@@ -67,9 +67,9 @@
                 </select>
             </p>
 
-            <input type="hidden" name="id" value="<?= $row['code'] ?>">
+            <input type="hidden" name="cost" value="<?= $row['code'] ?>">
             <input type="hidden" name="name" value="<?= $row['name'] ?>">
-            <input type="hidden" name="price" value="<?= $row['cost'] ?>">
+            <input type="hidden" name="code" value="<?= $row['cost'] ?>">
 
             <input type="submit" value="カートに入れる">
 
