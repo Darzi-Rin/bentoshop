@@ -14,6 +14,9 @@
     <?php require '_nav.php'; ?>
     <?php
     unset($_SESSION['products'][$_REQUEST['code']]);
+    require_once "_token.php";
+
+	$productToken = issueToken('productToken');
     ?>
     カートから商品を削除しました。
     <hr>
