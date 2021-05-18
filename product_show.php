@@ -53,7 +53,7 @@
             <p><img src="image/<?= $code ?>.jpg" style="width:450px;"></p>
             <p>￥<?= $cost ?></p>
             <p><?= $description; ?></p>
-            <p><?= $foodstuffs ?></p>
+            <p>材料：<?= $foodstuffs ?></p>
             <p>カロリー：<?= $cal ?></p>
             <p>在庫：<?= $stock ?></p>
             <p>個数: <select name="count">
