@@ -44,8 +44,11 @@
                 <!-- <td><a href='product_show.php?name=<?php echo $name; ?>'>詳細</a> -->
                 <td>
                     <form action="cart_create.php" method="post">
+                        <input type="hidden" name="count" value="1">
+                        <input type="hidden" name="code" value="<?= $row['code'] ?>">
+                        <input type="hidden" name="name" value="<?= $row['name'] ?>">
+                        <input type="hidden" name="cost" value="<?= $row['cost'] ?>">
                         <input type="submit" value="カートに入れる">
-                        <input type="hidden" name="product_code" value="<?= $code ?>">
                     </form>
                 </td>
             </tr>

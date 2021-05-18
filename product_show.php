@@ -21,34 +21,59 @@
 
 
     <?php
+    //db接続
     require "_db_access.php";
 
-    $name = $_GET['name'];
-    $sql = "select * from products where name = '$name'";
-    $stmt = $pdo->query($sql);
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //sql作成
+    $sql = "select * from products where name = :name";
+    //プリペアードステートメントを作る
+    $stm = $pdo->prepare($sql);
+    //プリペアードステートメントに値をバインドする
+    $stm->bindValue(':name', $_REQUEST['name'], PDO::PARAM_STR);
+    //SQL文を実行する
+    $stm->execute();
+    //結果の取得（連想配列で受け取る）
+    $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+
 
     foreach ($result as $row) {
-        $name = $row['name'];
-        $cost = $row['cost'];
-        $cal = $row['calorie'];
-        $foodstuffs = $row['foodstuffs'];
-        $description = $row['description'];
-        $stock = $row['stock'];
-        $code = $row['code'];
     ?>
-        <p><?= $name ?></p>
-        <p><img src="image/<?= $code ?>.jpg" style="width:450px;"></p>
-        <p>￥<?= $cost ?></p>
-        <p><?= $description; ?></p>
-        <p><?= $foodstuffs ?></p>
-        <p>カロリー：<?= $cal ?></p>
-        <p>在庫：<?= $stock ?></p>
         <form action="cart_create.php" method="post">
-            <input type="submit" value="カートに入れる">
-            <input type="hidden" name="product_code" value="<?= $code ?>">
-        </form>
+            <?php
+            $name = $row['name'];
+            $cost = $row['cost'];
+            $cal = $row['calorie'];
+            $foodstuffs = $row['foodstuffs'];
+            $description = $row['description'];
+            $stock = $row['stock'];
+            $code = $row['code'];
+            ?>
 
+            <p><?= $name ?></p>
+            <p><img src="image/<?= $code ?>.jpg" style="width:450px;"></p>
+            <p>￥<?= $cost ?></p>
+            <p><?= $description; ?></p>
+            <p><?= $foodstuffs ?></p>
+            <p>カロリー：<?= $cal ?></p>
+            <p>在庫：<?= $stock ?></p>
+            <p>個数: <select name="count">
+                    <?php
+                    for ($i = 1; $i <= 10; $i++) {
+                    ?>
+                        <option value="<?= $i ?>"><?= $i ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+            </p>
+
+            <input type="hidden" name="code" value="<?= $row['code'] ?>">
+            <input type="hidden" name="name" value="<?= $row['name'] ?>">
+            <input type="hidden" name="cost" value="<?= $row['cost'] ?>">
+
+            <input type="submit" value="カートに入れる">
+
+        </form>
 
     <?php
     }
