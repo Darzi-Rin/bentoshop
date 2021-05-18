@@ -4,7 +4,7 @@
 $user = 'lunch_site_user_update';
 $pass = 'tamakipass@edit';
 $dbName = 'lunch_box_site';
-$host = 'localhost';
+$host = 'db-mysql.ctdfirp6fk1i.us-east-1.rds.amazonaws.com';
 
 $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 

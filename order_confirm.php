@@ -6,9 +6,9 @@ require_once "_login_check.php";
 require_once "_token.php";
 
 // カートの確認
-if (!isset($_SESSION['product'])) {
+if (!isset($_SESSION['products'])) {
     $_SESSION['orderError']['orderNoProduct'] = "カートに商品がありません。\n\rカートをご確認ください。";
-} else if (count($_SESSION['product']) < 1) {
+} else if (count($_SESSION['products']) < 1) {
     $_SESSION['orderError']['orderNoProduct'] = "カートに商品がありません。\n\rカートをご確認ください。";
 }
 $postProductToken = isset($_POST['productToken']) ? $_POST['productToken'] : NULL;
