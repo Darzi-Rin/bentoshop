@@ -21,7 +21,7 @@
 	if (isset($_SESSION['products'][$code])) {
 		$count = $_SESSION['products'][$code]['count'];
 	}
-	$_SESSION['products'][$code] = [
+	$_SESSION['products']["$code"] = [
 		'name' => $_REQUEST['name'],
 		'cost' => $_REQUEST['cost'],
 		'count' => $count + $_REQUEST['count']
