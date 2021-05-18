@@ -7,8 +7,8 @@ $_SESSION['customer']['name'] = "たまきさま";
 $_SESSION['customer']['prefecture'] = "埼玉県";
 $_SESSION['customer']['address'] = "越谷市";
 $_SESSION['customer']['addressOther'] = "";
-$_SESSION['product']['00010000']['count'] = 3;
-$_SESSION['product']['00010001']['count'] = 3;
+$_SESSION['products']['00010000']['count'] = 3;
+$_SESSION['products']['00010001']['count'] = 3;
 // ログインの確認
 require_once "_login_check.php";
 
@@ -20,7 +20,7 @@ $productToken = issueToken('productToken');
 
 // カートの中身があるか
 if (
-    !isset($_SESSION['product'])
+    !isset($_SESSION['products'])
 ) {
     header("Location: ./cart_show.php");
     exit();

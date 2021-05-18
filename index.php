@@ -1,16 +1,42 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Tokyo');
 
 // データベースにアクセス
 require_once "_db_access.php";
 
 // おすすめ商品
 try {
-    $sql = "SELECT * FROM products WHERE stock >= 0 AND code like '00101%' ORDER BY stock DESC LIMIT 5";
+    $sql = "SELECT * FROM products 
+    WHERE stock >= 0 
+    AND code like '0001%' 
+    ORDER BY stock DESC LIMIT 5";
     $stmt = $pdo->query($sql);
     if ($stmt) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $productsList[] = array("code" => $row['code'], "name" => $row['name']);
+        }
+    }
+} catch (Exception $e) {
+    $productListError = "読み込みに失敗しました。";
+    echo $e->getMessage();
+}
+
+// 混雑度
+try {
+    $sql = "
+    SELECT TIME_FORMAT(will_received_date_time , '%H:%i') AS TIME FROM orders 
+    LEFT JOIN purchases
+    ON orders.id = purchases.order_id
+    WHERE order_date_time > CURDATE()
+    AND order_date_time < CURDATE() + 1;";
+    $stmt = $pdo->query($sql);
+    if ($stmt) {
+        for ($i = 5; $i <= 21; $i++) {
+            $busyList[sprintf('%02d', $i) . ':00'] = date('h') + 1 > $i ? -1 : 0;
+        }
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if ($busyList[$row['TIME']] >= 0) $busyList[$row['TIME']]++;
         }
     }
 } catch (Exception $e) {
@@ -55,44 +81,44 @@ if (isset($_SESSION['customer'])) {
     <h1>お弁当屋</h1>
     <h2>お知らせ</h2>
     <h2>現在の混雑度</h2>
-    <table>
-        <tr>
-
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-    </table>
+    <?php if (isset($busyList)) : ?>
+        <table border="1">
+            <tr>
+                <?php foreach ($busyList as $key => $item) : ?>
+                    <th><?= $key ?></th>
+                <?php endforeach; ?>
+            </tr>
+            <tr>
+                <?php foreach ($busyList as $key => $item) : ?>
+                    <?php if ($item === -1) : ?>
+                        <td>受付終了</td>
+                    <?php elseif ($item < 3) : ?>
+                        <td>平常</td>
+                    <?php elseif ($item < 6) : ?>
+                        <td>やや混雑</td>
+                    <?php else : ?>
+                        <td>大変混雑</td>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </tr>
+        </table>
+    <?php endif; ?>
     <h2>おすすめ商品</h2>
     <?php if (isset($productsList)) : ?>
         <table border="1">
             <tr>
                 <?php foreach ($productsList as $key => $item) : ?>
-                    <th><a href=""><?= $item['name'] ?></a></th>
+                    <th><a href="./product_show.php?name=<?= $item['name'] ?>"><?= $item['name'] ?></a></th>
                 <?php endforeach; ?>
             </tr>
             <tr>
                 <?php foreach ($productsList as $key => $item) : ?>
-                    <td><a href=""><img src="./imgs/<?= $item['code'] ?>.jpg" alt=""></a></td>
+                    <td><a href="./product_show.php?name=<?= $item['name'] ?>"><img src="./imgs/<?= $item['code'] ?>.jpg" alt=""></a></td>
                 <?php endforeach; ?>
             </tr>
         </table>
     <?php else : ?>
         <p><?php if (isset($productListError)) echo $productListError ?></p>
-    <?php endif; ?>
-    <?php if (isset($_SESSION['customer'])) : ?>
-        <h2>あなたのカート</h2>
-        <?php if (isset($_SESSION['product'])) : ?>
-            <table>
-                <?php foreach ($_SESSION['product'] as $key => $item) : ?>
-                    <tr>
-                        <th><?= $item['name'] ?></th>
-                        <td><a href=""><img src=".imgs/<?= $item['code'] ?>.jpg" alt=""></a></td>
-                        <td><?= $item['count'] ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-        <?php endif; ?>
     <?php endif; ?>
 </body>
 
