@@ -13,7 +13,7 @@ $postOrderToken = isset($_POST['orderToken']) ? $_POST['orderToken'] : NULL;
 if (isset($_POST['orderToken']) && !checkToken('orderToken', $postOrderToken)) {
     $_SESSION['orderError']['orderToken'] = "購入ページからアクセスしてください。\n\r購入ページを複数開いたりログアウトしないよう、お願いいたします。";
 }
-if (!isset($_SESSION['product'])) {
+if (!isset($_SESSION['products'])) {
     $_SESSION['orderError']['noProduct'] = "カートに商品がありません。\n\rカートをご確認ください。";
 } else if (count($_SESSION['product']) < 1) {
     $_SESSION['orderError']['noProduct'] = "カートに商品がありません。\n\rカートをご確認ください。";
@@ -28,26 +28,8 @@ if (!isset($_SESSION['orderError'])) {
 
     // データベース接続
     require_once "_db_access.php";
-    // $user = 'lunch_site_user_update';
-    // $password = '-';
-    // // 利用するデータベース
-    // $dbName = 'lunch_box_site';
-    // // MySQLサーバ
-    // $host = 'localhost';
-    // // MySQLのDSN文字列
-    // $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
-    // //MySQLデータベースに接続する
-    // try {
-    //     $pdo = new PDO($dsn, $user, $password);
-    //     // プリペアドステートメントのエミュレーションを無効にする
-    //     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    //     // 例外がスローされる設定にする
-    //     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // } catch (Exception $e) {
-    //     echo $e->getMessage();
-    //     exit();
-    // }
-    ksort($_SESSION['product']);
+
+    ksort($_SESSION['products']);
     try {
         // トランザクションの開始
         if ($pdo->beginTransaction()) {
@@ -57,7 +39,7 @@ if (!isset($_SESSION['orderError'])) {
                 $pdo->exec($sql);
 
                 // 在庫のチェックと減少
-                foreach ($_SESSION['product'] as $key => $value) {
+                foreach ($_SESSION['products'] as $key => $value) {
                     $sql = "UPDATE products SET stock = stock - :count WHERE code = :code AND stock >= :count2;";
                     $stmt = $pdo->prepare($sql);
                     $stmt->bindValue(":code", $key, PDO::PARAM_STR);
@@ -79,10 +61,11 @@ if (!isset($_SESSION['orderError'])) {
 
                 // 注文の作成
                 $sql = "
-                INSERT INTO orders(id, site_user_id, order_date_time, paid_date_time, receipt_date_time)
-                VALUES(NULL, ?, NOW(), NULL, NULL);";
+                INSERT INTO orders(id, site_user_id, order_date_time, paid_date_time, will_received_date_time, received_date_time)
+                VALUES(NULL, ?, NOW(), ?, NULL, NULL);";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindValue(1, $_SESSION['customer']['id'], PDO::PARAM_INT);
+                $stmt->bindValue(2, $_SESSION['order']['datetime'], PDO::PARAM_STR);
                 $stmt->execute();
 
                 // 最大値の取得
@@ -94,9 +77,9 @@ if (!isset($_SESSION['orderError'])) {
                 INSERT INTO purchases(id, product_code, order_id, count)
                 VALUES";
                 $number = 1;
-                foreach ($_SESSION['product'] as $key => $value) {
+                foreach ($_SESSION['products'] as $key => $value) {
                     $sql .= "(NULL, ?, @maxnum , ?)";
-                    if ($number >= count($_SESSION['product'])) break;
+                    if ($number >= count($_SESSION['products'])) break;
                     $number++;
                     $sql .= ",";
                 }
@@ -105,7 +88,7 @@ if (!isset($_SESSION['orderError'])) {
 
                 // 値をセット
                 $bindNumber = 1;
-                foreach ($_SESSION['product'] as $key => $value) {
+                foreach ($_SESSION['products'] as $key => $value) {
                     $stmt->bindValue($bindNumber++, $key, PDO::PARAM_STR);
                     $stmt->bindValue($bindNumber++, $value['count'], PDO::PARAM_INT);
                 }
