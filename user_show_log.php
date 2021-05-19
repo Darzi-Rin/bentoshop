@@ -4,7 +4,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/topNav.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topNav {
+            height: 44px;
+            text-align: center;
+            background-color: #ffffff;
+            color: #fff;
+        }
+
+        .content {
+            flex: 1;
+            background-color: #eee;
+            text-align: center;
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            border-bottom: 3px solid #000;
+        }
+    </style>
     <title>購入履歴画面</title>
 </head>
 

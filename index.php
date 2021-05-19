@@ -73,8 +73,64 @@ if (isset($_SESSION['customer'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/topNav.css">
-    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <style>
+        #contents .ul-list-02 {
+            list-style-type: none;
+            width: 570px;
+            margin: 1em 0;
+        }
+
+        #contents .ul-list-02 li {
+            float: left;
+            width: 185px;
+            /* 幅調節 */
+            margin-bottom: 4em;
+        }
+
+        #contents .ul-list-02 dl {
+            height: 300px;
+        }
+
+        /* 高さ調節 */
+
+        #contents .ul-list-02 dt {
+            margin-bottom: 1em;
+        }
+
+        #contents .ul-list-02 dd {
+            margin-bottom: 0.5em;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topNav {
+            height: 44px;
+            text-align: center;
+            background-color: #ffffff;
+            color: #fff;
+        }
+
+        .content {
+            flex: 1;
+            background-color: #eee;
+            text-align: center;
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            border-bottom: 3px solid #000;
+        }
+    </style>
     <title>トップ</title>
 </head>
 
