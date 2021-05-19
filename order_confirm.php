@@ -39,15 +39,15 @@ if (!isset($_POST['type'])) {
 }
 
 // 名前のチェック四文字以上20文字以下
-if (!isset($_POST['name'])) {
-    $_SESSION['orderError']["name"] = "お名前が入力されていません。";
-} else {
-    $errorCheckNameStr = mb_strlen($_POST['name']);
-    if ($errorCheckNameStr < 1 || $errorCheckNameStr > 20) {
-        $_SESSION['orderError']["name"] = "お名前は１文字以上２０文字以内でご入力ください。";
-    }
-    $_SESSION['order']['name'] = $_POST['name'];
-}
+// if (!isset($_POST['name'])) {
+//     $_SESSION['orderError']["name"] = "お名前が入力されていません。";
+// } else {
+//     $errorCheckNameStr = mb_strlen($_POST['name']);
+//     if ($errorCheckNameStr < 1 || $errorCheckNameStr > 20) {
+//         $_SESSION['orderError']["name"] = "お名前は１文字以上２０文字以内でご入力ください。";
+//     }
+$_SESSION['order']['name'] = $_POST['name'];
+// }
 
 //
 if (!isset($_POST['datetime'])) {
