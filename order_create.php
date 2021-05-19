@@ -111,7 +111,7 @@ if (isset($_SESSION['orderError'])) {
     header("Location: ./cart_show.php");
     exit();
 } else {
-    unset($_SESSION['orderError']);
+    unset($_SESSION['products']);
 }
 ?>
 <!-- view -->
