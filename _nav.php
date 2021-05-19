@@ -5,7 +5,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/navi.css">
+    <style>
+        .Nav ul {
+            display: table;
+            margin: 0 auto;
+            padding: 0;
+            width: 80%;
+            text-align: center;
+        }
+
+        .Nav ul li {
+            display: table-cell;
+            min-width: 50px;
+        }
+
+        .Nav ul li a {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        .Nav ul li.current {
+            background-color: #fcfcfc;
+        }
+
+        .Nav ul li.current a {
+            color: rgb(255, 0, 0);
+        }
+
+        .Nav ul li:hover {
+            border-bottom: 5px solid #ff0000;
+        }
+    </style>
     <title>Document</title>
     <!-- <link rel="stylesheet" href="navi.css"> -->
 </head>
